@@ -310,9 +310,40 @@
         padding: 20px;
       }
     }
+
+    /* Founder Section Styles */
+    .founder-content {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      text-align: left;
+    }
+
+    .founder-image {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #ff6f61;
+    }
+
+    .founder-info {
+      flex: 1;
+    }
+
+    @media (max-width: 768px) {
+      .founder-content {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .founder-image {
+        margin-bottom: 20px;
+      }
+    }
   </style>
 </head>
-<body>
+<body class="light-mode">
   <header>
     <nav>
       <div class="logo">
@@ -321,13 +352,14 @@
       <ul class="nav-links">
         <li><a href="#home">Home</a></li>
         <li><a href="#about">About Us</a></li>
+        <li><a href="#founder">Founder</a></li>
         <li><a href="#services">Services</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#testimonials">Testimonials</a></li>
         <li><a href="#contact">Contact Us</a></li>
       </ul>
       <div class="theme-toggle">
-        <i class="fas fa-moon" id="theme-icon"></i>
+        <i class="fas fa-sun" id="theme-icon"></i>
       </div>
     </nav>
   </header>
@@ -344,6 +376,19 @@
     <div class="glass">
       <h2>About Us</h2>
       <p>At CreativePulse Studios, we are passionate about creating digital experiences that inspire and engage. Our team of experts specializes in web development, UI/UX design, video editing, and more.</p>
+    </div>
+  </section>
+
+  <section id="founder" class="founder">
+    <div class="glass">
+      <h2>Meet Our Founder</h2>
+      <div class="founder-content">
+        <img src="founderimg.jpg" alt="Founder Name" class="founder-image">
+        <div class="founder-info">
+          <h3>SURAJ GIRI</h3>
+          <p>Suraj Giri is the visionary behind CreativePulse Studios. With a passion for technology and design, Suraj Giri has led the company to create innovative digital solutions that empower businesses and individuals alike. With years of experience in web development, UI/UX design, and video editing, Suraj Giri is dedicated to delivering exceptional results for every client.</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -365,6 +410,11 @@
           <i class="fas fa-video"></i>
           <h3>Video Editing</h3>
           <p>We produce professional video content for your brand.</p>
+        </div>
+        <div class="service-card">
+          <i class="fas fa-ruler-combined"></i>
+          <h3>Autocad Designer</h3>
+          <p>We provide precise and detailed Autocad designs for architectural and engineering projects.</p>
         </div>
       </div>
     </div>
@@ -446,6 +496,15 @@
     const themeToggle = document.querySelector('.theme-toggle');
     const themeIcon = document.getElementById('theme-icon');
     const body = document.body;
+
+    // Set initial icon based on the default theme
+    if (body.classList.contains('light-mode')) {
+      themeIcon.classList.remove('fa-moon');
+      themeIcon.classList.add('fa-sun');
+    } else {
+      themeIcon.classList.remove('fa-sun');
+      themeIcon.classList.add('fa-moon');
+    }
 
     themeToggle.addEventListener('click', () => {
       body.classList.toggle('light-mode');
